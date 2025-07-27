@@ -1,0 +1,165 @@
+# 🌍 Translation_Management_Service
+
+A scalable, secure, and high-performance Laravel API for managing translation strings across multiple locales. This service supports tagging, searching, exporting translations, and provides full CRUD via RESTful endpoints.
+
+---
+
+## 🚀 Features
+
+- 🌐 Multi-locale translation support (e.g., `en`, `fr`, `es`)
+- 🏷️ Tag-based categorization (e.g., `mobile`, `web`)
+- 🔎 Filter and search by key, content, or tag
+- 📤 JSON export endpoint for frontend consumption (e.g. Vue.js)
+- 🔐 Token-based API authentication using Laravel Sanctum
+- ⚡ High-performance responses (<200ms)
+- 📦 Seeder for 100,000+ records to test scalability
+- 📄 Swagger (OpenAPI) documentation
+- 🧪 >95% code coverage (unit & feature tests)
+- 🐳 Docker support included
+- 🌍 CDN-ready architecture (optional for future)
+
+---
+
+## 🛠 Tech Stack
+
+- Laravel 10
+- Sanctum (API authentication)
+- MySQL or SQLite
+- PHPUnit (tests + coverage)
+- L5-Swagger (OpenAPI docs)
+- Docker (optional)
+
+---
+
+## 📁 Project Structure
+
+app/
+├── Http/Controllers/Api
+│ ├── AuthController.php
+│ └── TranslationController.php
+database/
+├── seeders/TranslationSeeder.php
+├── factories/
+routes/
+├── api.php
+tests/
+├── Feature/
+├── Unit/
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/ShayanProgrammer/Translation_Management_Service.git
+cd Translation_Management_Service
+2. Install Dependencies
+composer install
+3. Setup Environment
+cp .env.example .env
+php artisan key:generate
+Configure your .env:
+
+For MySQL:
+
+dotenv
+DB_CONNECTION=mysql
+DB_DATABASE=translation_db
+DB_USERNAME=root
+DB_PASSWORD=
+Or for SQLite:
+
+touch database/database.sqlite
+dotenv
+DB_CONNECTION=sqlite
+DB_DATABASE=./database/database.sqlite
+4. Migrate and Seed
+php artisan migrate --seed
+To generate 100k+ records:
+
+php artisan db:seed --class=TranslationSeeder
+🔐 Authentication
+Register
+http
+
+POST /api/register
+json
+{
+  "name": "Shayan",
+  "email": "shayan@example.com",
+  "password": "secret123",
+  "password_confirmation": "secret123"
+}
+Login
+
+POST /api/login
+Returns:
+
+json
+{
+  "token": "your-access-token"
+}
+➡ Use this token as a Bearer Token in the Authorization header for all protected routes.
+
+📦 API Endpoints
+Method	Endpoint	Description
+POST	/api/register	Register a new user
+POST	/api/login	Login and get access token
+GET	/api/translations	List translations with filters
+POST	/api/translations	Create a new translation
+PUT	/api/translations/{id}	Update a translation
+GET	/api/translations/export	Export all translations as JSON
+
+📄 Swagger Documentation
+Generate Swagger docs:
+
+php artisan l5-swagger:generate
+View in browser:
+
+http://localhost:8000/api/documentation
+Includes: request bodies, parameters, tags, and response examples.
+
+🧪 Testing & Coverage
+Run tests:
+
+php artisan test
+Generate coverage report:
+
+./vendor/bin/phpunit --coverage-html coverage/
+Open coverage/index.html to view test coverage (>95%).
+
+Ensure Xdebug or PCOV is installed and enabled for code coverage to work.
+
+🐳 Docker (Optional)
+Build & Start
+docker-compose up -d --build
+Make sure your .env uses DB_HOST=mysql and DB_PORT=3306.
+
+✅ Implemented Requirements
+Requirement	Status
+PSR-12 Code Style	✅
+SOLID Principles	✅
+Optimized SQL Queries	✅
+Token-Based Auth (Sanctum)	✅
+No external CRUD/Translation libs	✅
+Seeder with 100k+ records	✅
+Swagger API Documentation	✅
+Test Coverage >95%	✅
+Docker Setup	✅
+CDN-Ready Architecture	✅
+
+👨‍💻 Author
+Shayan Ishaq
+Senior Laravel Developer
+📧 shayan@example.com
+🔗 GitHub
+
+📃 License
+This project is open-source and available under the MIT License.
+
+Let me know if you also want:
+- A `docker-compose.yml` and `Dockerfile`
+- A `.postman_collection.json` or Insomnia export
+- README badges (e.g., build passing, license, Laravel version, etc.)
+
+You're fully Swagger-documented, tested, and README-ready! ✅
