@@ -161,5 +161,3 @@ Let me know if you also want:
 - A `docker-compose.yml` and `Dockerfile`
 - A `.postman_collection.json` or Insomnia export
 - README badges (e.g., build passing, license, Laravel version, etc.)
-
-You're fully Swagger-documented, tested, and README-ready! ✅
